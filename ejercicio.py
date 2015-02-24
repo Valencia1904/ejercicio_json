@@ -118,7 +118,7 @@ for beca in becas:
 	if type(plazopresentacion_item) == list:
 		
 		for i in plazopresentacion_item:
-			if type(i["final"]) != "NoneType":
+			if str(type(i["final"])) == "unicode":
 				fecha2=i["final"]
 				fecha2=fecha2.split("T")
 				fecha2=fecha2[0].split("-")
@@ -138,7 +138,7 @@ for beca in becas:
 	
 
 	else:
-		if type(plazopresentacion_item["final"]) != "NoneType":
+		if str(type(plazopresentacion_item["final"])) == "unicode":
 			fecha2 = plazopresentacion_item["final"]
 			fecha2=fecha2.split("T")
 			fecha2=fecha2[0].split("-")
