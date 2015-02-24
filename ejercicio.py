@@ -37,6 +37,99 @@ for beca in becas:
 		print "Documento",beca["documentacion"]["documentacion_item"]["titulo"]
 	
 	print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-
 	
+raw_input("Pulsa intro para iniciar ejercicio 3")
+os.system('clear')
+
+
+abiertas = 0
+cerradas = 0
+
+for beca in becas:
+	if beca["estado"] == "Cerrado":
+		cerradas = cerradas+1
+	elif beca["estado"] == "Abierto plazo de solicitud" or beca["estado"] == "En Plazo de Solicitud":
+		abiertas = abiertas+1
+
+
+print "Abiertas:",abiertas
+print "Cerradas:",cerradas
+
+raw_input("Pulsa intro para iniciar ejercicio 4")
+os.system('clear')
+
+taxionomia = raw_input("Por que taxonomia desea filtrar: ").lower()
+
+for beca in becas:
+	if type(beca["taxonomias"]["taxonomia_item"]) == list:
+		for taxi in beca["taxonomias"]["taxonomia_item"]:
+			if taxionomia in taxi["nombre"].lower():
+				print "Titulo: ",beca["titulo"]
+				plazopresentacion=beca["plazopresentacion"]
+				plazopresentacion_item=plazopresentacion["plazopresentacion_item"]
+				if type(plazopresentacion_item) == list:
+					for fecha in plazopresentacion_item:
+						print "......................"
+						print "Tipo: ",fecha["tipo"]
+						print "Fecha inicial: ",fecha["incial"]
+						print "Fecha final: ",fecha["final"]
+				else:
+					print "Fecha inicial: ",plazopresentacion_item["incial"]
+					print "Fecha final: ",plazopresentacion_item["final"]
+				print "Descripcion"
+				print beca["descripcion"]
+				print ""
+				print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+	else:
+		if taxionomia in beca["taxonomias"]["taxonomia_item"]["nombre"].lower():
+			print "Titulo: ",beca["titulo"]
+			plazopresentacion=beca["plazopresentacion"]
+			plazopresentacion_item=plazopresentacion["plazopresentacion_item"]
+			if type(plazopresentacion_item) == list:
+				for fecha in plazopresentacion_item:
+					print "......................"
+					print "Tipo: ",fecha["tipo"]
+					print "Fecha inicial: ",fecha["incial"]
+					print "Fecha final: ",fecha["final"]
+			else:
+				print "Fecha inicial: ",plazopresentacion_item["incial"]
+				print "Fecha final: ",plazopresentacion_item["final"]
+			print "Descripcion"
+			print beca["descripcion"]
+			print ""
+			print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+
+
+
+
+
+raw_input("Pulsa intro para iniciar ejercicio 5")
+os.system('clear')
+
+fecha=raw_input("Dame una fecha con formato(YYYY-MM-DD): ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
