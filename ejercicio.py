@@ -80,7 +80,7 @@ for beca in becas:
 				print beca["descripcion"]
 				print ""
 				print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-
+	print "Titulo: ",beca["titulo"]
 	else:
 		if taxionomia in beca["taxonomias"]["taxonomia_item"]["nombre"].lower():
 			print "Titulo: ",beca["titulo"]
@@ -109,8 +109,47 @@ raw_input("Pulsa intro para iniciar ejercicio 5")
 os.system('clear')
 
 fecha=raw_input("Dame una fecha con formato(YYYY-MM-DD): ")
+fecha=fecha.split("-")
+
+for beca in becas:
+	
+	plazopresentacion=beca["plazopresentacion"]
+	plazopresentacion_item=plazopresentacion["plazopresentacion_item"]
+	if type(plazopresentacion_item) == list:
+		
+		for i in plazopresentacion_item:
+			fecha2=i["final"]
+			fecha2=fecha2.split("T")
+			fecha2=fecha2[0].split("-")
+			
+			if fecha2[0] >= fecha[0]:
+				if fecha2[1] >= fecha[1]:
+					if fecha2[2] >= fecha[2]:
+						
+						print "Titulo: ",beca["titulo"]
+						if type(plazopresentacion_item) == list:
+							for x in plazopresentacion_item:
+								print "......................"
+								print "Tipo: ",x["tipo"]
+								print "Fecha inicial: ",x["incial"]
+								print "Fecha final: ",x["final"]
+						else:
+							print "Fecha inicial: ",plazopresentacion_item["incial"]
+							print "Fecha final: ",plazopresentacion_item["final"]
+						print "Descripcion"
+						print beca["descripcion"]
+						print ""
+						print "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 
+	else:
+		fecha2 = plazopresentacion_item["final"]
+		fecha2=fecha2.split("T")
+		fecha2=fecha2[0].split("-")
+		
+		if fecha2[0] >= fecha[0]:
+			if fecha2[1] >= fecha[1]:
+				if fecha2[2] >= fecha[2]:
 
 
 
